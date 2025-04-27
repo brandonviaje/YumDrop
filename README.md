@@ -2,6 +2,8 @@
 
 **YumDrop** is a full-stack food delivery web application that lets users browse, order, and enjoy meals with ease. It’s built with a modern tech stack to ensure fast performance, scalability, and a smooth user experience.
 
+<img src="https://github.com/user-attachments/assets/5fe540ab-3be5-400e-864e-7c1fd2cf59d8" alt="YumDrop Logo" width="200" height="200" />
+
 ## Tech Stack
 
 <table>
