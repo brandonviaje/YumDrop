@@ -21,8 +21,7 @@
 - Browse a wide variety of foods
 - Upload and store food images securely with AWS S3
 - Add foods to your cart
-- Place orders
-- Search for specific dishes
+- Place orders (in progress)
 - Fast and responsive UI
 
 
