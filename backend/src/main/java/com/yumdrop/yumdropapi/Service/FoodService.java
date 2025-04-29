@@ -1,7 +1,7 @@
 package com.yumdrop.yumdropapi.Service;
 
-import com.yumdrop.yumdropapi.IO.FoodRequest;
-import com.yumdrop.yumdropapi.IO.FoodResponse;
+import com.yumdrop.yumdropapi.DTO.FoodRequest;
+import com.yumdrop.yumdropapi.DTO.FoodResponse;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 

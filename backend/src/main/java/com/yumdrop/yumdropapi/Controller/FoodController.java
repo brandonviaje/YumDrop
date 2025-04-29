@@ -2,8 +2,8 @@ package com.yumdrop.yumdropapi.Controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yumdrop.yumdropapi.IO.FoodRequest;
-import com.yumdrop.yumdropapi.IO.FoodResponse;
+import com.yumdrop.yumdropapi.DTO.FoodRequest;
+import com.yumdrop.yumdropapi.DTO.FoodResponse;
 import com.yumdrop.yumdropapi.Service.FoodService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/foods")
 @AllArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 public class FoodController {
 
     private final FoodService foodService;

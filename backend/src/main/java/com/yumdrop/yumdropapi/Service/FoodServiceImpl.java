@@ -1,10 +1,9 @@
 package com.yumdrop.yumdropapi.Service;
 
 import com.yumdrop.yumdropapi.Entity.Food;
-import com.yumdrop.yumdropapi.IO.FoodRequest;
-import com.yumdrop.yumdropapi.IO.FoodResponse;
+import com.yumdrop.yumdropapi.DTO.FoodRequest;
+import com.yumdrop.yumdropapi.DTO.FoodResponse;
 import com.yumdrop.yumdropapi.Repository.FoodRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
