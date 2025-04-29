@@ -36,9 +36,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Node modules and build directories
-frontend/node_modules
-frontend/dist
-frontend/dist-ssr
+frontend/adminpanel/node_modules
+frontend/yumdrop/node_modules
+frontend/adminpanel/dist
+frontend/yumdrop/dist
+frontend/adminpanel/dist-ssr
+frontend/yumdrop/dist-ssr
 *.local
 
 .DS_Store
