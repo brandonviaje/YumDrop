@@ -7,7 +7,7 @@ const MenuBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
-        <img src={assets.YumDrop} alt="YumDrop" className='mx-4' height={48} width={48}></img>
+        <Link to="/"><img src={assets.YumDrop} alt="YumDrop" className='mx-4' height={48} width={48}></img></Link>
         <button
           className="navbar-toggler"
           type="button"
