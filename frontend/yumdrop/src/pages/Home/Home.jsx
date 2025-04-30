@@ -5,13 +5,13 @@ import { useState } from 'react';
 
 const Home = () => {
 
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('all');
 
   return (
     <main className='container'>
       <Header/>
       <ExploreMenu category={category} setCategory={setCategory}/>
-      <FoodDisplay category={category}/>
+      <FoodDisplay category={category} searchText={''}/>
     </main>
   )
 }
