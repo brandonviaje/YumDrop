@@ -18,7 +18,7 @@ const Contact = () => {
 
                     <div className="contact-item d-flex mb-3">
                       <div className="contact-icon me-3">
-                        <i className="fas fa-map-marker-alt"></i>
+                        <i class="bi bi-house"></i>
                       </div>
                       <div>
                         <h6 className="mb-0">Address</h6>
@@ -31,7 +31,7 @@ const Contact = () => {
 
                     <div className="contact-item d-flex mb-3">
                       <div className="contact-icon me-3">
-                        <i className="fas fa-phone"></i>
+                        <i class="bi bi-telephone"></i>
                       </div>
                       <div>
                         <h6 className="mb-0">Phone</h6>
@@ -41,20 +41,19 @@ const Contact = () => {
 
                     <div className="contact-item d-flex mb-3">
                       <div className="contact-icon me-3">
-                        <i className="fas fa-envelope"></i>
+                        <i class="bi bi-envelope"></i>
                       </div>
                       <div>
                         <h6 className="mb-0">Email</h6>
-                        <p className="mb-0">contact@company.com</p>
+                        <p className="mb-0">viajebrandon@gmail.com</p>
                       </div>
                     </div>
 
                     <div className="social-links mt-4">
                       <h6 className="mb-3">Follow Us</h6>
-                      <a href="#" className="social-icon me-2"><i className="fab fa-facebook-f"></i></a>
-                      <a href="#" className="social-icon me-2"><i className="fab fa-twitter"></i></a>
-                      <a href="#" className="social-icon me-2"><i className="fab fa-linkedin-in"></i></a>
-                      <a href="#" className="social-icon"><i className="fab fa-instagram"></i></a>
+                      <a href="https://www.linkedin.com/in/brandon-viaje-236179217/" className="social-icon me-2"><i className="bi bi-linkedin"></i></a>
+                      <a href="https://github.com/brandonviaje" className="social-icon me-2"><i class="bi bi-github"></i></a>
+                      <a href="https://www.instagram.com/bmviaje/" className="social-icon"><i class="bi bi-instagram"></i></a>
                     </div>
                   </div>
                 </div>
