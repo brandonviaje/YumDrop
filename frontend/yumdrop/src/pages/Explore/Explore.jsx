@@ -29,7 +29,7 @@ const Explore = () => {
           </div>
         </div>
       </div>
-      <FoodDisplay />
+      <FoodDisplay/>
     </>
 
   )

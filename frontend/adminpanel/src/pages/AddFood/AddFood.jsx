@@ -111,15 +111,15 @@ const AddFood = () => {
                   onChange={onChangeHandler}
                   value={data.category}
                 >
-                  <option value="american">American</option>
-                  <option value="carribean">Caribbean</option>
-                  <option value="chinese">Chinese</option>
-                  <option value="indian">Indian</option>
-                  <option value="italian">Italian</option>
-                  <option value="japanese">Japanese</option>
-                  <option value="korean">Korean</option>
-                  <option value="mexican">Mexican</option>
-                  <option value="thai">Thai</option>
+                  <option value="American">American</option>
+                  <option value="Carribean">Caribbean</option>
+                  <option value="Chinese">Chinese</option>
+                  <option value="Indian">Indian</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Korean">Korean</option>
+                  <option value="Mexican">Mexican</option>
+                  <option value="Thai">Thai</option>
                 </select>
               </div>
   
