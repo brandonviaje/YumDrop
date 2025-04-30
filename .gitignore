@@ -44,6 +44,7 @@ frontend/adminpanel/dist-ssr
 frontend/yumdrop/dist-ssr
 *.local
 
+#Misc
 .DS_Store
 *.suo
 *.ntvs*
