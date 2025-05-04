@@ -22,6 +22,6 @@
 - Upload and store food images securely with AWS S3
 - Add foods to your cart
 - Place orders (in progress)
-- Fast and responsive UI
+- Fast and responsive UI 
 
 
