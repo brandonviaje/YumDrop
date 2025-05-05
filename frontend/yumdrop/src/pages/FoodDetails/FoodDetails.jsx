@@ -34,7 +34,9 @@ const FoodDetails = () => {
             />
           </div>
           <div className="col-md-6">
-            <div className="fs-5 mb-1">Category: <span className='badge text-bg-warning'>{data.category}</span></div>
+            <div className="fs-5 mb-1">Category: 
+              <span className="badge text-bg-warning">{data.category ? data.category.charAt(0).toUpperCase() + data.category.slice(1) : 'Unknown'}</span>
+            </div>
             <h1 className="display-5 fw-bolder">{data.name}</h1>
             <div className="fs-5 mb-2">
               <span> ${data.price}</span>

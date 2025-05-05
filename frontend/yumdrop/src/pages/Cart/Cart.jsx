@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
-  const {foodList, increaseQty,decreaseQty, quantities} = useContext(StoreContext);
+  const {foodList, increaseQty,decreaseQty, quantities, removeCart} = useContext(StoreContext);
   
   //Cart Items
   const cartItems = foodList.filter(food => quantities[food.id] > 0 );
@@ -45,7 +45,7 @@ const Cart = () => {
                     </div>
                     <div className="col-md-2 text-end">
                       <p className="fw-bold">${(food.price * quantities[food.id]).toFixed(2)}</p>
-                      <button className="btn btn-sm btn-outline-danger">
+                      <button className="btn btn-sm btn-outline-danger" onClick={()=> removeCart(food.id)}>
                         <i className="bi bi-trash"></i>
                       </button>
                     </div>
@@ -57,7 +57,7 @@ const Cart = () => {
             )
           }
           <div className="text-start mb-4">
-            <Link to="/" className="btn btn-outline-primary">    <i className="bi bi-arrow-left me-2"></i>Continue Shopping</Link>
+            <Link to="/" className="btn btn-outline-primary"> <i className="bi bi-arrow-left me-2"></i>Continue Shopping</Link>
           </div>
         </div>
         <div className="col-lg-4">
