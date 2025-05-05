@@ -1,26 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import {toast} from 'react-toastify';
-import { fetchFoodDetails } from '../../service/foodService';
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { fetchFoodDetails } from "../../service/foodService";
+import { StoreContext } from "../../context/StoreContext";
 
 const FoodDetails = () => {
-  const {id} = useParams();
-
+  const { id } = useParams();
+  const { increaseQty } = useContext(StoreContext);
   const [data, setData] = useState({});
+  const navigate = useNavigate();
 
-  useEffect(()=> {
-    const loadFoodDetails = async () =>{
+  useEffect(() => {
+    const loadFoodDetails = async () => {
       try {
         const foodData = await fetchFoodDetails(id);
         setData(foodData);
         console.log(foodData);
       } catch (error) {
-        toast.error('Error displaying food details.');
-        console.log('Error:', error);
+        toast.error("Error displaying food details.");
+        console.log("Error:", error);
       }
-    }
+    };
     loadFoodDetails();
-  },[id]);
+  }, [id]);
+
+  const addToCart = () => {
+    increaseQty(data.id);
+    navigate("/cart");
+  };
 
   return (
     <section className="py-5">
@@ -34,8 +41,14 @@ const FoodDetails = () => {
             />
           </div>
           <div className="col-md-6">
-            <div className="fs-5 mb-1">Category: 
-              <span className="badge text-bg-warning">{data.category ? data.category.charAt(0).toUpperCase() + data.category.slice(1) : 'Unknown'}</span>
+            <div className="fs-5 mb-1">
+              Category:
+              <span className="badge text-bg-warning">
+                {data.category
+                  ? data.category.charAt(0).toUpperCase() +
+                    data.category.slice(1)
+                  : "Unknown"}
+              </span>
             </div>
             <h1 className="display-5 fw-bolder">{data.name}</h1>
             <div className="fs-5 mb-2">
@@ -43,7 +56,11 @@ const FoodDetails = () => {
             </div>
             <p className="lead">{data.description}</p>
             <div className="d-flex">
-              <button className="btn btn-outline-dark flex-shrink-0" type="button">
+              <button
+                className="btn btn-outline-dark flex-shrink-0"
+                type="button"
+                onClick={addToCart}
+              >
                 <i className="bi-cart-fill me-1"></i>
                 Add to cart
               </button>
@@ -53,6 +70,6 @@ const FoodDetails = () => {
       </div>
     </section>
   );
-}
+};
 
 export default FoodDetails;
