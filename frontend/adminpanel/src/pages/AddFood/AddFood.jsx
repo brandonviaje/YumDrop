@@ -1,46 +1,43 @@
-import React from 'react';
-import { assets } from '../../assets/assets';
-import { useState } from 'react';
-import { addFood } from '../../services/foodService';
-import { toast } from 'react-toastify';
+import React from "react";
+import { assets } from "../../assets/assets";
+import { useState } from "react";
+import { addFood } from "../../services/foodService";
+import { toast } from "react-toastify";
 
 const AddFood = () => {
-
-  const [image,setImage] = useState(false);
-  const [data,setData] = useState({
-    name:'',
-    description: '',
-    price: '',
-    category: 'american'
+  const [image, setImage] = useState(false);
+  const [data, setData] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category: "american",
   });
-
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData(data => ({...data, [name]: value}));
-  }
+    setData((data) => ({ ...data, [name]: value }));
+  };
 
-  const onSubmitHandler = async(event)=>{
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
-    if(!image){
-      toast.error('Please select an image!');
-      return
+    if (!image) {
+      toast.error("Please select an image!");
+      return;
     }
 
     // API Call
-    try{
-      await addFood(data,image);
+    try {
+      await addFood(data, image);
       toast.success("Food Added Successfully!");
 
       //Reset Form Data
-      setData({name:'',description:'',category:'american',price:''});
+      setData({ name: "", description: "", category: "american", price: "" });
       setImage(null);
-
-    }catch(error){
+    } catch (error) {
       toast.error("Error Adding Food.");
     }
-  }
+  };
 
   return (
     <div className="mx-2 mt-2">
@@ -49,7 +46,7 @@ const AddFood = () => {
           <div className="card-body">
             <form onSubmit={onSubmitHandler}>
               <h2 className="mb-4">Add Food</h2>
-  
+
               <div className="mb-3">
                 <label htmlFor="image" className="form-label">
                   <img
@@ -75,7 +72,7 @@ const AddFood = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder='Enter food name...'
+                  placeholder="Enter food name..."
                   id="name"
                   required
                   name="name"
@@ -83,14 +80,14 @@ const AddFood = () => {
                   value={data.name}
                 />
               </div>
-  
+
               <div className="mb-3">
                 <label htmlFor="price" className="form-label">
                   Price
                 </label>
                 <input
                   type="number"
-                  placeholder='$0.00'
+                  placeholder="$0.00"
                   name="price"
                   className="form-control"
                   id="price"
@@ -99,7 +96,7 @@ const AddFood = () => {
                   value={data.price}
                 />
               </div>
-  
+
               <div className="mb-3">
                 <label htmlFor="category" className="form-label">
                   Category
@@ -122,7 +119,7 @@ const AddFood = () => {
                   <option value="thai">Thai</option>
                 </select>
               </div>
-  
+
               <div className="mb-3">
                 <label htmlFor="description" className="form-label">
                   Description
@@ -130,7 +127,7 @@ const AddFood = () => {
                 <textarea
                   className="form-control"
                   id="description"
-                  placeholder='Enter description here...'
+                  placeholder="Enter description here..."
                   rows="5"
                   required
                   name="description"
@@ -138,7 +135,7 @@ const AddFood = () => {
                   value={data.description}
                 ></textarea>
               </div>
-  
+
               <div className="d-grid">
                 <button type="submit" className="btn btn-primary btn-lg">
                   Save
@@ -150,7 +147,6 @@ const AddFood = () => {
       </div>
     </div>
   );
-  
-}
+};
 
 export default AddFood;

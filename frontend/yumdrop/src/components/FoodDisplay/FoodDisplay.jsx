@@ -1,28 +1,33 @@
-import React, { useContext } from 'react'
-import { StoreContext } from '../../context/StoreContext'
-import FoodItem from '../FoodItem/FoodItem';
+import React, { useContext } from "react";
+import { StoreContext } from "../../context/StoreContext";
+import FoodItem from "../FoodItem/FoodItem";
 
-const FoodDisplay = ({category, searchText}) => {
+const FoodDisplay = ({ category, searchText }) => {
+  const { foodList } = useContext(StoreContext);
 
-  const {foodList} = useContext(StoreContext);
-
-  const filterFoods = foodList.filter(food => {
-    const matchesCategory = category.toLowerCase() === 'all' || food.category?.toLowerCase() === category.toLowerCase();
-    const matchesSearch = food.name?.toLowerCase().includes(searchText.toLowerCase());
+  const filterFoods = foodList.filter((food) => {
+    const matchesCategory =
+      category.toLowerCase() === "all" ||
+      food.category?.toLowerCase() === category.toLowerCase();
+    const matchesSearch = food.name
+      ?.toLowerCase()
+      .includes(searchText.toLowerCase());
     return matchesCategory && matchesSearch;
-  });  
+  });
 
   return (
     <div className="container">
       <div className="row">
         {filterFoods.length > 0 ? (
           filterFoods.map((food, index) => (
-            <FoodItem key={index} 
-            name={food.name} 
-            description={food.description} 
-            price={food.price} 
-            id = {food.id} 
-            imageUrl = {food.imageUrl}/>
+            <FoodItem
+              key={index}
+              name={food.name}
+              description={food.description}
+              price={food.price}
+              id={food.id}
+              imageUrl={food.imageUrl}
+            />
           ))
         ) : (
           <div className="text-center mt-4">
@@ -31,7 +36,7 @@ const FoodDisplay = ({category, searchText}) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FoodDisplay
+export default FoodDisplay;

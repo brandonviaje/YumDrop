@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import FoodDisplay from '../../components/FoodDisplay/FoodDisplay';
+import React, { useState } from "react";
+import FoodDisplay from "../../components/FoodDisplay/FoodDisplay";
 
 const Explore = () => {
-  const [category, setCategory] = useState('all');
-  const [searchText, setSearchText] = useState('');
+  const [category, setCategory] = useState("all");
+  const [searchText, setSearchText] = useState("");
 
   return (
     <>
@@ -12,10 +12,10 @@ const Explore = () => {
           <div className="col-md-6">
             <form onSubmit={(e) => e.preventDefault()}>
               <div className="input-group mb-3">
-                <select 
-                  className="form-select mt-2" 
-                  style={{ maxWidth: '150px' }} 
-                  onChange={(e) => setCategory(e.target.value)} 
+                <select
+                  className="form-select mt-2"
+                  style={{ maxWidth: "150px" }}
+                  onChange={(e) => setCategory(e.target.value)}
                   value={category}
                 >
                   <option value="all">All</option>
@@ -29,7 +29,13 @@ const Explore = () => {
                   <option value="mexican">Mexican</option>
                   <option value="thai">Thai</option>
                 </select>
-                <input type="text" className="form-control mt-2" placeholder="Search food.." onChange={(e) => setSearchText(e.target.value)} value={searchText} />
+                <input
+                  type="text"
+                  className="form-control mt-2"
+                  placeholder="Search food.."
+                  onChange={(e) => setSearchText(e.target.value)}
+                  value={searchText}
+                />
                 <button className="btn btn-primary mt-2" type="submit">
                   <i className="bi bi-search"></i>
                 </button>
@@ -41,6 +47,6 @@ const Explore = () => {
       <FoodDisplay category={category} searchText={searchText} />
     </>
   );
-}
+};
 
 export default Explore;
