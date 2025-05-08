@@ -5,6 +5,7 @@ import com.yumdrop.yumdropapi.DTO.UserResponse;
 import com.yumdrop.yumdropapi.Entity.User;
 import com.yumdrop.yumdropapi.Repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,6 +14,7 @@ public class UserServiceImpl implements UserService {
 
     //Injections
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserResponse registerUser(UserRequest request) {
@@ -25,7 +27,7 @@ public class UserServiceImpl implements UserService {
     private User convertToEntity(UserRequest request){
         return User.builder()
                 .email(request.getEmail())
-                .password(request.getPassword())
+                .password(passwordEncoder.encode((request.getPassword())))
                 .name(request.getName())
                 .build();
     }
