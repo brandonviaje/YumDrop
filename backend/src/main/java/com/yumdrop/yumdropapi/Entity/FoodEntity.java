@@ -7,16 +7,17 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Data
 @AllArgsConstructor
+@Data
 @Builder
 @NoArgsConstructor
-@Document(collection = "users")
-public class User {
-
+@Document(collection = "foods")
+public class FoodEntity {
     @Id
     private String id;
     private String name;
-    private String email;
-    private String password;
+    private String description;
+    private double price;
+    private String category;
+    private String imageUrl;
 }

@@ -2,7 +2,7 @@ package com.yumdrop.yumdropapi.Service;
 
 import com.yumdrop.yumdropapi.DTO.UserRequest;
 import com.yumdrop.yumdropapi.DTO.UserResponse;
-import com.yumdrop.yumdropapi.Entity.User;
+import com.yumdrop.yumdropapi.Entity.UserEntity;
 import com.yumdrop.yumdropapi.Repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,25 +18,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse registerUser(UserRequest request) {
-        User newUser = convertToEntity(request);
-        newUser = userRepository.save(newUser);
-        return convertToResponse(newUser);
+        UserEntity newUserEntity = convertToEntity(request);
+        newUserEntity = userRepository.save(newUserEntity);
+        return convertToResponse(newUserEntity);
     }
 
     //Helpers
-    private User convertToEntity(UserRequest request){
-        return User.builder()
+    private UserEntity convertToEntity(UserRequest request){
+        return UserEntity.builder()
                 .email(request.getEmail())
-                .password(passwordEncoder.encode((request.getPassword())))
+                .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .build();
     }
 
-    private UserResponse convertToResponse(User user){
+    private UserResponse convertToResponse(UserEntity userEntity){
        return UserResponse.builder()
-                .id(user.getId())
-                .email(user.getEmail())
-                .name(user.getName())
+                .id(userEntity.getId())
+                .email(userEntity.getEmail())
+                .name(userEntity.getName())
                 .build();
     }
 }

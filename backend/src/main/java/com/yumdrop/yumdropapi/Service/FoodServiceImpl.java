@@ -1,6 +1,6 @@
 package com.yumdrop.yumdropapi.Service;
 
-import com.yumdrop.yumdropapi.Entity.Food;
+import com.yumdrop.yumdropapi.Entity.FoodEntity;
 import com.yumdrop.yumdropapi.DTO.FoodRequest;
 import com.yumdrop.yumdropapi.DTO.FoodResponse;
 import com.yumdrop.yumdropapi.Repository.FoodRepository;
@@ -78,11 +78,11 @@ public class FoodServiceImpl implements FoodService {
      */
     @Override
     public FoodResponse addFood(FoodRequest request, MultipartFile file) {
-        Food newFood = convertToEntity(request);
+        FoodEntity newFoodEntity = convertToEntity(request);
         String imageUrl = uploadFile(file);
-        newFood.setImageUrl(imageUrl);
-        newFood = foodRepository.save(newFood);
-        return convertToResponse(newFood);
+        newFoodEntity.setImageUrl(imageUrl);
+        newFoodEntity = foodRepository.save(newFoodEntity);
+        return convertToResponse(newFoodEntity);
     }
 
     /**
@@ -92,7 +92,7 @@ public class FoodServiceImpl implements FoodService {
      */
     @Override
     public List<FoodResponse> readFoods() {
-        List<Food> databaseEntries = foodRepository.findAll();
+        List<FoodEntity> databaseEntries = foodRepository.findAll();
         return databaseEntries.stream().map(object -> convertToResponse(object)).collect(Collectors.toList());
     }
 
@@ -105,8 +105,8 @@ public class FoodServiceImpl implements FoodService {
      */
     @Override
     public FoodResponse readFood(String id) {
-        Food existingFood = foodRepository.findById(id).orElseThrow(() -> new RuntimeException("Food not found for the id:" +id));
-        return convertToResponse(existingFood);
+        FoodEntity existingFoodEntity = foodRepository.findById(id).orElseThrow(() -> new RuntimeException("Food not found for the id:" +id));
+        return convertToResponse(existingFoodEntity);
     }
 
     /**
@@ -155,8 +155,8 @@ public class FoodServiceImpl implements FoodService {
      * @param request the incoming FoodRequest containing food data
      * @return a Food entity ready to be saved in the database
      */
-    private Food convertToEntity(FoodRequest request) {
-        return Food.builder()
+    private FoodEntity convertToEntity(FoodRequest request) {
+        return FoodEntity.builder()
                 .name(request.getName())
                 .description(request.getDescription())
                 .category(request.getCategory())
@@ -170,7 +170,7 @@ public class FoodServiceImpl implements FoodService {
      * @param entity the Food entity fetched from the database
      * @return a FoodResponse DTO to send back to the client
      */
-    private FoodResponse convertToResponse(Food entity) {
+    private FoodResponse convertToResponse(FoodEntity entity) {
         return FoodResponse.builder()
                 .id(entity.getId())
                 .name(entity.getName())
