@@ -6,9 +6,16 @@ import { StoreContext } from "../../context/StoreContext.jsx";
 
 const MenuBar = () => {
   const [active, setActive] = useState("home");
-  const { quantities } = useContext(StoreContext);
+  const { quantities, token, setToken } = useContext(StoreContext);
   const cartItems = Object.values(quantities).filter((qty) => qty > 0).length;
   const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    navigate("/");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -84,18 +91,51 @@ const MenuBar = () => {
                 </span>
               </div>
             </Link>
-            <button
-              className="btn btn-outline-primary"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-            <button
-              className="btn btn-outline-success"
-              onClick={() => navigate("/register")}
-            >
-              Register
-            </button>
+            {!token ? (
+              <>
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={() => navigate("/login")}
+                >
+                  Login
+                </button>
+                <button
+                  className="btn btn-outline-success"
+                  onClick={() => navigate("/register")}
+                >
+                  Register
+                </button>
+              </>
+            ) : (
+              <div className="dropdown text-end">
+                <a
+                  href=""
+                  className="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src={assets.user}
+                    alt=""
+                    height={32}
+                    width={32}
+                    className="rounded-circle"
+                  />
+                </a>
+
+                <ul className="dropdown-menu text-small">
+                  <li
+                    className="dropdown-item"
+                    onClick={() => navigate("/myorders")}
+                  >
+                    Orders
+                  </li>
+                  <li className="dropdown-item" onClick={logout}>
+                    Logout
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
